@@ -10,7 +10,7 @@
       @csrf
       <div class="mb-3">
         <label for="name" class="form-label">Name</label>
-        <input type="text" value="{{old('name')}}" class="form-control" name="name" @error('name') is-invalid @enderror>
+        <input type="text" value="{{old('name')}}" class="form-control @error('name') is-invalid @enderror" name="name"> 
         @error('name')
         <span class="invalid-feedback">
           <strong>{{$message}}</strong>
@@ -19,7 +19,7 @@
       </div>
       <div class="mb-3">
         <label for="email" class="form-label">Email address</label>
-        <input type="email" value="{{old('email')}}" class="form-control" name="email" @error('email') is-invalid @enderror>
+        <input type="email" value="{{old('email')}}" class="form-control @error('email') is-invalid @enderror" name="email" >
         @error('email')
         <span class="invalid-feedback">
           <strong>{{$message}}</strong>
@@ -28,7 +28,12 @@
       </div>
       <div class="mb-3">
         <label for="password" class="form-label">Password</label>
-        <input type="password" value="{{old('password')}}" class="form-control" name="password" @error('password') is-invalid @enderror >
+        <input type="password" value="{{old('password')}}" class="form-control @error('password') is-invalid @enderror" name="password">
+        @error('password')
+        <span class="invalid-feedback">
+          <strong>{{$message}}</strong>
+        </span>
+        @enderror
       </div>
       <div class="mb-3">
         <label for="confirm_password" class="form-label">Confirm Password</label>

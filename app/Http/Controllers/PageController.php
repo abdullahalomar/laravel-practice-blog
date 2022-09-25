@@ -10,4 +10,24 @@ class PageController extends Controller
     {
         return view('index');
     }
+    public function single()
+    {
+        return view('single');
+    }
+    public function add_post()
+    {
+        return view('addpost');
+    }
+    public function posts()
+    {
+        return view('posts');
+    }
+    public function login()
+    {
+        return view('login');
+    }
+    public function register()
+    {
+        return view('register');
+    }
 }

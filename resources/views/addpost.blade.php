@@ -13,20 +13,27 @@
                   <li class="list-group-item"><a href="{{url('')}}">Logout</a></li>
                 </ul>
               </div>
-        </div>
-        <div class="col-md-8">
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Title</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" >
-              </div>
-              <div class="mb-3">
-                <label for="formFile" class="form-label">Thumbnail</label>
-                <input class="form-control" type="file" id="formFile">
-              </div>
-              <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Description</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-              </div>
+            </div>
+            <div class="col-md-8">
+          <ul>
+            
+          </ul>
+              <form action="{{route('addpost')}}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">Title</label>
+                  <input type="text" class="form-control" name="title" >
+                </div>
+                <div class="mb-3">
+                  <label for="formFile" class="form-label">Thumbnail</label>
+                  <input class="form-control" type="file" name="image" >
+                </div>
+                <div class="mb-3">
+                  <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+                  <textarea class="form-control" name="description" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
         </div>
        </div>
     </div>
