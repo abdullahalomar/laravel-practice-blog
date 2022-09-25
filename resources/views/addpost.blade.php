@@ -8,17 +8,26 @@
         <div class="col-md-4">
             <div class="card" style="width: 18rem;">
                 <ul class="list-group list-group-flush">
-                  <li class="list-group-item"><a href="{{url('')}}">Posts</a></li>
-                  <li class="list-group-item"><a href="{{url('')}}">Add new</a></li>
-                  <li class="list-group-item"><a href="{{url('')}}">Logout</a></li>
+                  <li class="list-group-item"><a href="{{url('#')}}">Posts</a></li>
+                  <li class="list-group-item"><a href="{{url('#')}}">Add new</a></li>
+                  <li class="list-group-item"><a href="{{url('#')}}">Logout</a></li>
                 </ul>
               </div>
             </div>
             <div class="col-md-8">
-          <ul>
-            
-          </ul>
-              <form action="{{route('addpost')}}" method="POST" enctype="multipart/form-data">
+              @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+              @if (session()->has('message'))
+              <h4 class="text-success">{{session('message')}}</h4>
+              @endif
+              <form action="{{route('add_new')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
                   <label for="exampleFormControlInput1" class="form-label">Title</label>

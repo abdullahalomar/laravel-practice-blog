@@ -2,27 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
-    public function addpost(Request $request)
+    public function add_new(Request $request)
     {
-        // $post = $request->validate([
-        //     'title' => ['string'],
-        //     'image' => ['mimes:jpg,png,jpeg'],
-        //     'description' => ['string']
-        // ]);
-        // dd($post);
-        // DB::table('posts')->insert($post);
-        // return back();
-        $image = $request->image->store('images');
-        DB::table('posts')->insert([
-            'title'=> $request->title, 
-            'image'=> $image, 
-            'description'=> $request->description, 
+        $data=$request->validate([
+            'title'=>['required', 'min:4'],
+            'image'=>['required', 'file'],
+            'description'=>['required', 'min:10'],
         ]);
-        return back();
+        if ($request->hasFile('image')) {
+            $data['image'] = $request->file('image')->store('images');
+        }
+        Post::create($data);
+        return back()->with('message', 'Post created successfully');
     }
 }

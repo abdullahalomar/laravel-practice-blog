@@ -16,4 +16,4 @@ Route::get('login', [PageController::class, 'login']);
 Route::get('register', [PageController::class, 'register']);
 
 Route::post('register', [AuthController::class, 'register'])->name('register');
-Route::post('add-post', [PostController::class, 'addpost'])->name('addpost');
+Route::post('add-post', [PostController::class, 'add_new'])->name('add_new');
