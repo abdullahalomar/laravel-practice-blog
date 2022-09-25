@@ -5,6 +5,22 @@
 @section('content')
 <div class="container mt-5">
    <div class="col-md-6 mx-auto">
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+    @if (session()->has('message'))
+    <div class="alert alert-success">
+      <ul>
+          <li>{{ session('message') }}</li>
+      </ul>
+  </div>
+    @endif
     <h5 class="mb-4">Register</h5>
     <form action="{{route('register')}}" method="POST">
       @csrf
@@ -36,8 +52,8 @@
         @enderror
       </div>
       <div class="mb-3">
-        <label for="confirm_password" class="form-label">Confirm Password</label>
-        <input type="password" class="form-control" name="confirm_password">
+        <label for="password_confirmation" class="form-label">Confirm Password</label>
+        <input type="password" class="form-control" name="password_confirmation">
       </div>
       {{-- <div class="mb-3 form-check">
         <input type="checkbox" class="form-check-input" id="exampleCheck1">
